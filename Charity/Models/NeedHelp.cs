@@ -18,9 +18,11 @@ namespace Charity.Models
         [Required(ErrorMessage = "Please tell us your last name")]
         public string LastName { get; set; }
 
+        /*
         [Required(ErrorMessage = "Please tell us your email")]
         [EmailAddress]
         public string Email { get; set; }
+        */
 
         [Required(ErrorMessage = "Please tell us your phone number")]
         [Phone]

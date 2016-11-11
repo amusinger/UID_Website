@@ -163,9 +163,23 @@
     <Compile Include="Controllers\CanHelpsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NeedHelpsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610251655250_InitialCreate.cs" />
+    <Compile Include="Migrations\201610251655250_InitialCreate.Designer.cs">
+      <DependentUpon>201610251655250_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611080524423_first.cs" />
+    <Compile Include="Migrations\201611080524423_first.Designer.cs">
+      <DependentUpon>201611080524423_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611111443111_Need Help.cs" />
+    <Compile Include="Migrations\201611111443111_Need Help.Designer.cs">
+      <DependentUpon>201611111443111_Need Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CanHelp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -243,6 +257,12 @@
     <Content Include="Views\CanHelps\Index.cshtml" />
     <Content Include="Views\CanHelps\DonateConfirmed.cshtml" />
     <Content Include="Views\Home\HowWeHelp.cshtml" />
+    <Content Include="Views\Home\Thank.cshtml" />
+    <Content Include="Views\NeedHelps\INeedHelp.cshtml" />
+    <Content Include="Views\NeedHelps\Delete.cshtml" />
+    <Content Include="Views\NeedHelps\Details.cshtml" />
+    <Content Include="Views\NeedHelps\Edit.cshtml" />
+    <Content Include="Views\NeedHelps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,6 +273,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610251655250_InitialCreate.resx">
+      <DependentUpon>201610251655250_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611080524423_first.resx">
+      <DependentUpon>201611080524423_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611111443111_Need Help.resx">
+      <DependentUpon>201611111443111_Need Help.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

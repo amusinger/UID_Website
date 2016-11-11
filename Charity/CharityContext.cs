@@ -19,4 +19,6 @@ public class CharityContext : DbContext
 
     public System.Data.Entity.DbSet<Charity.Models.CanHelp> CanHelps { get; set; }
 
+    public System.Data.Entity.DbSet<Charity.Models.NeedHelp> NeedHelps { get; set; }
+
 }

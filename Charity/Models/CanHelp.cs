@@ -27,12 +27,13 @@ namespace Charity.Models
         [CreditCard]
         public string CreditCard { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter CV number")]
         [Range(1, 1000, ErrorMessage="Please enter CV number")]
         [Display(Name="CV number on your credit card (Security code)")]
         public int CV { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a sum in US dollars")]
+        [Display(Name = "Amount (in $)")]
         public int Amount { get; set; }
 }
 }

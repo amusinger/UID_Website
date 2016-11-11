@@ -17,6 +17,11 @@ namespace Charity.Controllers
             return View();
         }
 
+        public ActionResult Thank()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {

@@ -10,126 +10,123 @@ using Charity.Models;
 
 namespace Charity.Controllers
 {
-    public class CanHelpsController : Controller
+    [Authorize]
+    public class NeedHelpsController : Controller
     {
         private CharityContext db = new CharityContext();
 
-        // GET: CanHelps
-        [Authorize]
+        // GET: NeedHelps
         public ActionResult Index()
         {
-            return View(db.CanHelps.ToList());
+            return View(db.NeedHelps.ToList());
         }
 
-        // GET: CanHelps/Donate
-        [AllowAnonymous]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CanHelps/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CanHelpId,FirstName,LastName,Email,CreditCard,CV,Amount")] CanHelp canHelp)
-        {
-            if (ModelState.IsValid)
-            {
-                db.CanHelps.Add(canHelp);
-                db.SaveChanges();
-                return RedirectToAction("DonateConfirmed", new { id = canHelp.CanHelpId });
-            }
-
-            return View(canHelp);
-        }
-
-        public ActionResult DonateConfirmed(int? id)
-        {
-            
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CanHelp canHelp = db.CanHelps.Find(id);
-            if (canHelp == null)
-            {
-                return HttpNotFound();
-            }
-            return View(canHelp);
-        }
-
-
-        // GET: CanHelps/Details/5
+        // GET: NeedHelps/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CanHelp canHelp = db.CanHelps.Find(id);
-            if (canHelp == null)
+            NeedHelp needHelp = db.NeedHelps.Find(id);
+            if (needHelp == null)
             {
                 return HttpNotFound();
             }
-            return View(canHelp);
+            return View(needHelp);
         }
 
-       
-        // GET: CanHelps/Edit/5
+        // GET: NeedHelps/Create
+        public ActionResult INeedHelp()
+        {
+            return View();
+        }
+
+        // POST: NeedHelps/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult INeedHelp([Bind(Include = "NeedHelpId,FirstName,LastName,Phone,Message")] NeedHelp needHelp)
+        {
+            if (ModelState.IsValid)
+            {
+                db.NeedHelps.Add(needHelp);
+                db.SaveChanges();
+                return RedirectToAction("NeedConfirmed", new { id = needHelp.NeedHelpId });
+            }
+
+            return View(needHelp);
+        }
+
+        public ActionResult NeedConfirmed(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NeedHelp needHelp = db.NeedHelps.Find(id);
+            if (needHelp == null)
+            {
+                return HttpNotFound();
+            }
+            return View(needHelp);
+        }
+
+        // GET: NeedHelps/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CanHelp canHelp = db.CanHelps.Find(id);
-            if (canHelp == null)
+            NeedHelp needHelp = db.NeedHelps.Find(id);
+            if (needHelp == null)
             {
                 return HttpNotFound();
             }
-            return View(canHelp);
+            return View(needHelp);
         }
 
-        // POST: CanHelps/Edit/5
+        // POST: NeedHelps/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CanHelpId,FirstName,LastName,Email,CreditCard,CV,Amount")] CanHelp canHelp)
+        public ActionResult Edit([Bind(Include = "NeedHelpId,FirstName,LastName,Email,Phone,Message")] NeedHelp needHelp)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(canHelp).State = EntityState.Modified;
+                db.Entry(needHelp).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("DonateConfirmed");
+                return RedirectToAction("Index");
             }
-            return View(canHelp);
+            return View(needHelp);
         }
 
-        // GET: CanHelps/Delete/5
+        // GET: NeedHelps/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CanHelp canHelp = db.CanHelps.Find(id);
-            if (canHelp == null)
+            NeedHelp needHelp = db.NeedHelps.Find(id);
+            if (needHelp == null)
             {
                 return HttpNotFound();
             }
-            return View(canHelp);
+            return View(needHelp);
         }
 
-        // POST: CanHelps/Delete/5
+        // POST: NeedHelps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CanHelp canHelp = db.CanHelps.Find(id);
-            db.CanHelps.Remove(canHelp);
+            NeedHelp needHelp = db.NeedHelps.Find(id);
+            db.NeedHelps.Remove(needHelp);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
