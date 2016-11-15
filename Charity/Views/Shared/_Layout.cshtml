@@ -19,12 +19,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="Home/Index.cshtml" class="logo">
+                <a href="@Url.Action("Index", "Home")">
                     <img class="img-logo" src="~/Content/img/logo.png" />
+                </a>
+                    @*<a href="Index.cshtml"><img class="img-logo" src="~/Content/img/logo.png" /></a>*@
+              
                     @*Charity*@
 
 
-                </a>
 
                 @*@Html.ActionLink("Charity", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>

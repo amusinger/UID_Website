@@ -10,11 +10,12 @@ using Charity.Models;
 
 namespace Charity.Controllers
 {
-    [Authorize]
+      [Authorize]
     public class NeedHelpsController : Controller
     {
         private CharityContext db = new CharityContext();
 
+      
         // GET: NeedHelps
         public ActionResult Index()
         {
@@ -53,7 +54,7 @@ namespace Charity.Controllers
             {
                 db.NeedHelps.Add(needHelp);
                 db.SaveChanges();
-                return RedirectToAction("NeedConfirmed", new { id = needHelp.NeedHelpId });
+                return RedirectToAction("Thank", "Home");
             }
 
             return View(needHelp);

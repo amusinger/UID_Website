@@ -8,12 +8,17 @@ namespace Charity.Controllers
 {
     public class HomeController : Controller
     {
+        private CharityContext db = new CharityContext();
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult HowWeHelp()
         {
+            var money = db.CanHelps.Sum(x => x.Amount);
+             
+
+            ViewBag.Message = money;
             return View();
         }
 

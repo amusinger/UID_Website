@@ -103,7 +103,7 @@ namespace Charity.Controllers
             {
                 db.Entry(canHelp).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("DonateConfirmed");
+                return RedirectToAction("DonateConfirmed", new { id = canHelp.CanHelpId });
             }
             return View(canHelp);
         }
